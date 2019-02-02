@@ -1,0 +1,16 @@
+{
+  "name": "peka-api",
+  "version": "1.0.0",
+  "description": "Server part of an app",
+  "main": "apiServer.js",
+  "scripts": {
+    "start": "node apiServer.js"
+  },
+  "author": "skotniczny",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "request": "^2.88.0"
+  }
+}
