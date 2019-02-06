@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Spinner from './Spinner.js';
 
 import { API_URL } from '../common/data.js';
 
@@ -44,7 +45,7 @@ export default class StopPoint extends Component {
     if (error) {
       return <div>Error: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Wczytywanie danych...</div>;
+      return <Spinner />;
     } else {
       return (
         <div className="stop-point">

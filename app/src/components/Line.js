@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LineNumber from './LineNumber.js';
+import Spinner from './Spinner.js';
 
 import { API_URL } from '../common/data.js';
 
@@ -39,7 +40,7 @@ export default class Line extends Component {
     if (error) {
       return (<div className="error"><LineNumber line={this.props.number} /> Coś poszło nie tak!</div>);
     } else if (!isLoaded) {
-      return (<div>Wczytywanie danych...</div>);
+      return <Spinner />;
     } else {
       return (
         <div className="directions">
