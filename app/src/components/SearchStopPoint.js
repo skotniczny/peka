@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SearchResults from './SearchResults.js';
 
+import { API_URL } from '../common/data.js';
+
 export default class SearchStopPoint extends Component {
   constructor(props) {
     super(props);
@@ -22,7 +24,7 @@ export default class SearchStopPoint extends Component {
   }
 
   handleSubmit(event) {
-    const url = "http://localhost:3001/stopPoints/" + this.state.query;
+    const url = API_URL + '/stopPoints/' + this.state.query;
     fetch(url)
     .then(res => res.json())
     .then(

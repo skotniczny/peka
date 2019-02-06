@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { API_URL } from '../common/data.js';
+
 export default class StopPoint extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ export default class StopPoint extends Component {
   }
 
   loadData() {
-    const url = "http://localhost:3001/times/" + this.props.tag;
+    const url = API_URL + "/times/" + this.props.tag;
     fetch(url)
       .then(res => res.json())
       .then(

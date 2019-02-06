@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import LineNumber from './LineNumber.js';
 
+import { API_URL } from '../common/data.js';
+
 export default class Line extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ export default class Line extends Component {
   }
 
   componentDidMount() {
-    const url = "http://localhost:3001/bollardsByLine/" + this.props.number;
+    const url = API_URL + '/bollardsByLine/' + this.props.number;
     fetch(url)
       .then(res => res.json())
       .then(

@@ -4,8 +4,9 @@ const Express = require('express')
 
 const { apiRequest, processRequest } = require('./utils/helpers.js')
 
-const app = new Express();
-const server = new http.Server(app);
+const app = new Express()
+const server = new http.Server(app)
+const port = (process.env.PORT || 3001)
 
 const api = 'http://www.peka.poznan.pl/vm/method.vm?ts='
 
@@ -45,7 +46,7 @@ app.get('/bollardsByLine/:line', (req, res) => {
   })
 })
 
-server.listen(3001, (err) => {
+server.listen(port, (err) => {
   if (err) return console.error(err)
-  console.info('API Server running on http://localhost:3001')
+  console.info(`API Server running on http://localhost:${port}`)
 })

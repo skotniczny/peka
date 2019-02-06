@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import BollardRow from './BollardRow.js';
 import Directions from './Directions.js';
 
+import { API_URL } from '../common/data.js'
+
 export default class BollardByStopPoint extends Component {
 
   constructor(props) {
@@ -14,7 +16,7 @@ export default class BollardByStopPoint extends Component {
   }
 
   componentDidMount() {
-    const url = "http://localhost:3001/bollardsByStopPoint/" + this.props.name;
+    const url = API_URL + '/bollardsByStopPoint/' + this.props.name;
     fetch(url)
       .then(res => res.json())
       .then(

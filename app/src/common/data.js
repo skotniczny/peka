@@ -1,3 +1,5 @@
+export const API_URL = (process.env.NODE_ENV !== "production") ? "http://localhost:3001" : "https://peka.mybluemix.net"
+
 export const tramsColors = {
   "1": {
     backgroundColor: "rgb(208, 0, 111)",
