@@ -1,6 +1,46 @@
 .App {
+  margin: 6rem auto 0;
+  width:  100%;
   max-width: 900px;
-  margin: 0.5rem auto;
+}
+
+.app-header {
+  background-color: #45484a;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.app-name {
+  flex: 1 1 auto;
+  padding-right: 2rem;
+  color: #fff;
+}
+
+.app-name {
+  margin: 0;
+  font-weight: 500;
+}
+
+.app-name-link {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.app-header .search-component {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.lines-list .row {
+  text-align: center;
 }
 
 .heading {
@@ -88,14 +128,35 @@
   position: relative;
 }
 
+.direction-bollard__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.direction-bollard__link:hover {
+  color: #1b9dd9;
+}
+
+.direction-bollard__link:hover .order-no::after {
+  border-color: #1b9dd9;
+  background-color: #fff;
+}
+
 .direction-line {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
+  display: inline-block;
   text-align: center;
   font-weight: 600;
   font-size: 2em;
+}
+
+.direction-line__link {
+  color: inherit;
+  display: block;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
 }
 
 .direction-line__tram {
@@ -104,6 +165,9 @@
   line-height: 2em;
   border-color: transparent;
   border-radius: 1.5em;
+}
+
+.direction-line__tram .direction-line__link {
   padding: 0;
 }
 
@@ -128,7 +192,7 @@
 
 .search-form {
   font-size: 1.125rem;
-  border: 3px solid #3b3a3c;
+  border: 3px solid #fff;
   padding: 0.5rem 1rem;
   width: 100%;
 }
@@ -140,7 +204,8 @@
 .results-list {
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   position: absolute;
   width: 100%;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,0.2);
@@ -149,10 +214,6 @@
 
 .results-list:first-child {
   border-top-color: transparent;
-}
-
-.search-component {
-  margin-bottom: 1rem;
 }
 
 .search-row {
@@ -188,6 +249,8 @@
   height: 10px;
   border-radius: 10px;
   background-color: #1b9dd9;
+  border: 2px solid #1b9dd9;
+  transition: background-color 0.2s ease;
 }
 
 .order-no.first::before {

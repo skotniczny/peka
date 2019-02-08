@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import LineNumber from './LineNumber.js';
 import Spinner from './Spinner.js';
 
@@ -54,7 +56,9 @@ export default class Line extends Component {
               </div>
               {direction.bollards.map(bollard => (
                 <div className="direction-bollards" key={bollard.name}>
-                  <div><div className={"order-no " + (bollard.orderNo === 1 && "first")}>{bollard.orderNo}.</div> <span className="bollard-name">{bollard.name}</span> <span className="tag">{bollard.tag}</span></div>
+                  <Link to={`/przystanek/${bollard.tag}`} className="direction-bollard__link">
+                    <span className={"order-no " + (bollard.orderNo === 1 && "first")}>{bollard.orderNo}.</span> <span className="bollard-name">{bollard.name}</span> <span className="tag">{bollard.tag}</span>
+                  </Link>
                 </div>
               ))}
             </div>
