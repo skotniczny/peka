@@ -51,7 +51,7 @@ export default class StopPoint extends Component {
         <div className="stop-point">
           <div className="stop-point__data">
             <h2 className="item-name">{bollard.name}</h2>
-            <h3 className="item-tag" title={bollard.symbol}>{bollard.tag}</h3>
+            <h3 className="item-tag" title={bollard.tag}>{bollard.symbol}</h3>
           </div>
           <div className="stop-point__rows">
             <div className="stop-point__headings">
