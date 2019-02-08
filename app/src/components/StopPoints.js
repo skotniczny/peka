@@ -12,6 +12,7 @@ export default class StopPoint extends Component {
       times: [],
       bollard: {}
     };
+    this.intervalID = 0;
   }
 
   loadData() {
@@ -37,7 +38,11 @@ export default class StopPoint extends Component {
 
   componentDidMount() {
     this.loadData();
-    setInterval(() => {this.loadData()}, 15000)
+    this.intervalID = setInterval(() => {this.loadData()}, 15000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
 
   render() {
