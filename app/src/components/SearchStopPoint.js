@@ -50,6 +50,7 @@ export default class SearchStopPoint extends Component {
       <div className="search-component">
         <form onSubmit={this.handleSubmit}>
           <div className="search-bar">
+            <label className="form-label">Przystanki</label>
             <input className="search-form" type="text" value={this.state.query} onChange={this.handleInput} placeholder="Wpisz nazwę przystanku" />
           </div>
         </form>

@@ -1,9 +1,3 @@
-.App {
-  margin: 6rem auto 0;
-  width:  100%;
-  max-width: 900px;
-}
-
 .app-header {
   background-color: #45484a;
   padding: 1rem 2rem;
@@ -15,6 +9,24 @@
   display: flex;
   align-items: center;
   z-index: 1;
+}
+
+.header-description {
+  display: none;
+  color: #fff;
+  border-top: 3px dotted #fff;
+  border-bottom: 3px dotted #fff;
+  margin: 2rem 0;
+}
+
+.app-main {
+  padding: 6rem 2rem 0;
+}
+
+.main-content {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .app-name {
@@ -37,6 +49,25 @@
 .app-header .search-component {
   flex: 1 1 100%;
   max-width: 100%;
+}
+
+@media (min-width: 1200px) {
+  .app-header {
+    display: block;
+    min-height: 100vh;
+    padding-top: 2rem;
+    width: 32%;
+  }
+
+  .app-main {
+    margin-left: 32%;
+    padding: 2rem;
+    width: 68%;
+  }
+
+  .header-description {
+    display: block;
+  }
 }
 
 .lines-list .row {
@@ -190,6 +221,20 @@
 
 /* Search Input */
 
+.form-label {
+  color: #fff;
+  display: none;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+@media (min-width: 1200px) {
+  .form-label {
+    display: inline-block;
+  }
+}
+
 .search-form {
   font-size: 1.125rem;
   border: 3px solid #fff;
@@ -219,6 +264,10 @@
 .search-row {
   border-top: 1px solid #ddd;
   padding: 0.5rem 1rem;
+}
+
+.search-row:hover {
+  background-color: #f2f2f2;
 }
 
 .order-no {
