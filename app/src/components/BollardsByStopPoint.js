@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import BollardRow from './BollardRow.js';
 import Directions from './Directions.js';
 import Spinner from './Spinner.js';
@@ -47,10 +49,10 @@ export default class BollardByStopPoint extends Component {
         <div className="stop-point">
           <div className="stop-point__rows">
             {bollards.map((item, index) => (
-              <div className="stop-point__card" key={index}>
+              <Link to={`/przystanek/${item.bollard.tag}`} className="stop-point__card" key={index}>
                 <BollardRow bollard={item.bollard} />
                 <Directions directions={item.directions} />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
