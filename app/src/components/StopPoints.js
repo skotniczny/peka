@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Spinner from './Spinner.js';
+import Spinner from './Spinner';
+import StopPointDepartureTime from './StopPointDepartureTime';
 
-import { API_URL } from '../common/data.js';
+import { API_URL } from '../common/data';
 
 export default class StopPoint extends Component {
   constructor(props) {
@@ -73,7 +74,7 @@ export default class StopPoint extends Component {
                   <span title="pojazd niskopodłgowy">{"\u267F"}</span>
                 }
               </div>
-              <div className="item-property item-minutes">{item.minutes} min</div>
+              <StopPointDepartureTime item={item} />
             </div>
             ))}
           </div>

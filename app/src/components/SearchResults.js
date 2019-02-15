@@ -6,8 +6,8 @@ const SearchResults = props => {
     return (
       <div className="results-list">
         {props.result.map(item => (
-          <div className="search-row">
-            <Link to={`/przystanki/${encodeURIComponent(item.name)}`} key={item.symbol} className="search-row-link">
+          <div className="search-row" key={item.symbol}>
+            <Link to={`/przystanki/${encodeURIComponent(item.name)}`} className="search-row-link">
               {item.name} <span className="tag">{item.symbol}</span>
             </Link>
           </div>
