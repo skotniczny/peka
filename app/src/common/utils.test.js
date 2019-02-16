@@ -1,5 +1,7 @@
-import { getTime } from './utils';
+import { formatDate } from './utils';
 
-it("parse departure string", () => {
-  expect(getTime("2019-02-15T21:19:00.000Z")).toEqual("21:19");
+it("parse date ISO string", () => {
+  expect(formatDate("2019-02-15T21:19:00.000Z", "HH:mm")).toEqual("21:19");
+  expect(formatDate("2019-02-15T21:19:00.000Z", "HH:mm:ss")).toEqual("21:19:00");
+  expect(formatDate("2019-02-15T21:19:00.000Z", "dd.MM.yyyy")).toEqual("15.02.2019");
 });

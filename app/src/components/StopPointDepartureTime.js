@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTime } from '../common/utils';
+import { formatDate } from '../common/utils';
 
 const StopPointDepartureTime = props => {
   const { realTime, minutes, departure } = props.item;
@@ -16,7 +16,7 @@ const StopPointDepartureTime = props => {
 
   return (
     <div className={"item-property item-minutes " + (isBlink ? "blink" : "")}>
-      {realTime ? display : getTime(departure)}
+      {realTime ? display : formatDate(departure, "HH:mm")}
     </div>
   );
 }

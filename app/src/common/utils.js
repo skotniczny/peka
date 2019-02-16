@@ -14,7 +14,15 @@ const parseDateTimeString = (dateTimeString) => {
   }
 }
 
-export const getTime = (dateTimetring) => {
-  const { HH, mm } = parseDateTimeString(dateTimetring)
-  return HH + ":" + mm;
+export const formatDate = (dateTimetring, format) => {
+  const parsedDate = parseDateTimeString(dateTimetring)
+  let output = "";
+  let regex = /(HH)|(MM)|(dd)|(mm)|(ss)|(yyyy)|(zzzz)|([^HMdmsyz']+)/g;
+  let match;
+
+  // eslint-disable-next-line
+  while (match = regex.exec(format)) {
+    output += parsedDate[match[0]] || match[0]
+  }
+  return output
 }

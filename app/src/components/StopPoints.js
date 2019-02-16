@@ -13,7 +13,6 @@ export default class StopPoint extends Component {
       times: [],
       bollard: {}
     };
-    this.intervalID = 0;
   }
 
   loadData() {

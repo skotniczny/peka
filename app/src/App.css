@@ -49,6 +49,26 @@
   max-width: 100%;
 }
 
+.app-title {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clock {
+  color: #fff;
+  display: none;
+  text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+               0px -5px 25px rgba(255,255,255,0.3);
+}
+
+.clock-time {
+  font-size: 1.6rem;
+}
+
+.clock-date {
+  text-align: center;
+}
+
 @media (min-width: 1200px) {
   .app-header {
     display: block;
@@ -63,6 +83,7 @@
     width: 68%;
   }
 
+  .clock,
   .header-description {
     display: block;
   }
