@@ -18,7 +18,13 @@ app.use((req, res, next) => {
 
 app.get('/stopPoints/:query', (req, res) => {
   apiRequest(api + new Date().getTime(), 'getStopPoints', { pattern: decodeURIComponent(req.params.query) }, (err, httpResponse, body) => {
-    processRequest(err, body, res)  
+    processRequest(err, body, res)
+  })
+})
+
+app.get('/streets/:query', (req, res) => {
+  apiRequest(api + new Date().getTime(), 'getStreets', { pattern: decodeURIComponent(req.params.query) }, (err, httpResponse, body) => {
+    processRequest(err, body, res)
   })
 })
 
