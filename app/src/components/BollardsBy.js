@@ -5,9 +5,9 @@ import BollardRow from './BollardRow.js';
 import Directions from './Directions.js';
 import Spinner from './Spinner.js';
 
-import { API_URL } from '../common/data.js'
+import { API_URL } from '../common/data'
 
-export default class BollardByStopPoint extends Component {
+export default class BollardsBy extends Component {
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ export default class BollardByStopPoint extends Component {
   }
 
   componentDidMount() {
-    const url = API_URL + '/bollardsByStopPoint/' + this.props.name;
+    const url = API_URL + "/" + this.props.method + "/" + this.props.name;
     fetch(url)
       .then(res => res.json())
       .then(
@@ -57,6 +57,6 @@ export default class BollardByStopPoint extends Component {
           </div>
         </div>
       );
-    }
+    }    
   }
 }

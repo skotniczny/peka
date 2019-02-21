@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import SearchStopPoint from './SearchStopPoint';
 import Clock from './Clock';
+import Search from './Search';
 
 const AppHeader = () => (
   <header className="app-header">
@@ -13,7 +13,8 @@ const AppHeader = () => (
     <p>Monitor pokazuje rzeczywisty czas przyjazdu tramwaju lub autobusu na konkretny przystanek.</p>
     <p>Znajdź linię, która cię interesuje oraz przystanek z którego chcesz jechać, a system pokaże rzeczywisty czas przyjazdu.</p>
   </div>
-  <SearchStopPoint />
+  <Search config={{method: 'stopPoints', label: 'przystanki', path: 'przystanki', placeholder: 'Wpisz nazwę przystanku'}} />
+  <Search config={{method: 'streets', label: 'ulice', path: 'ulica', placeholder: 'Wpisz ulicę lub miejscowość'}} />
 </header>
 )
 

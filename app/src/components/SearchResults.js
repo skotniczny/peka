@@ -5,10 +5,10 @@ const SearchResults = props => {
   if (props.result.length && !props.isEmpty) {
     return (
       <div className="results-list">
-        {props.result.map(item => (
-          <div className="search-row" key={item.symbol}>
-            <Link to={`/przystanki/${encodeURIComponent(item.name)}`} className="search-row-link">
-              {item.name} <span className="tag">{item.symbol}</span>
+        {props.result.map((item, index) => (
+          <div className="search-row" key={`${props.path}-${index}`}>
+            <Link to={`/${props.path}/${encodeURIComponent(item.name)}`} className="search-row-link">
+              {item.name} {(item.symbol ? <span className="tag">{item.symbol}</span> : "")}
             </Link>
           </div>
         ))}

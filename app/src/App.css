@@ -87,6 +87,10 @@
   .header-description {
     display: block;
   }
+
+  .search-component {
+    margin-bottom: 1rem;
+  }
 }
 
 .lines-list .row {

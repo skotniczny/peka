@@ -8,7 +8,7 @@ import AppHeader from './components/AppHeader';
 import Lines from './components/Lines';
 import Line from './components/Line';
 import StopPoint from './components/StopPoints';
-import BollardsByStopPoint from './components/BollardsByStopPoint';
+import BollardsBy from './components/BollardsBy';
 
 class App extends Component {
   render() {
@@ -21,7 +21,8 @@ class App extends Component {
               <Route exact path="/" component={Lines} />
               <Route path={`/linia/:number`} render={({match}) =>  (<Line number={match.params.number} />)} />
               <Route path={`/przystanek/:tag`} render={({match}) => (<StopPoint tag={match.params.tag} />)} />
-              <Route path={`/przystanki/:name`} render={({match}) => (<BollardsByStopPoint name={match.params.name} key={match.params.name} />)} />
+              <Route path={`/przystanki/:name`} render={({match}) => (<BollardsBy method="bollardsByStopPoint" name={match.params.name} key={`przystanki-${match.params.name}`} />)} />
+              <Route path={`/ulica/:name`} render={({match}) => (<BollardsBy method="bollardsByStreet" name={match.params.name} key={`ulice-${match.params.name}`} />)} />
             </div>
           </main>
         </div>

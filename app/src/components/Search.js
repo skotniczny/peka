@@ -3,16 +3,16 @@ import SearchResults from './SearchResults.js';
 
 import { API_URL } from '../common/data.js';
 
-export default class SearchStopPoint extends Component {
+export default class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
       query: '',
       error: null,
       isLoaded: false,
-      stopPoints: []
+      results: []
     };
- 
+
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -20,19 +20,18 @@ export default class SearchStopPoint extends Component {
   handleInput(event) {
     const value = event.target.value;
     this.setState({query: value});
-    if (value === '') this.setState({stopPoints: []});
+    if (value === '') this.setState({results: []});
   }
 
   handleSubmit(event) {
-    const url = API_URL + '/stopPoints/' + this.state.query;
+    const url = API_URL + '/' + this.props.config.method + '/' + this.state.query;
     fetch(url)
     .then(res => res.json())
     .then(
       (result) => {
         this.setState({
           isLoaded: true,
-          times: result.times,
-          stopPoints: result
+          results: result
         });
       },
       (error) => {
@@ -46,16 +45,17 @@ export default class SearchStopPoint extends Component {
   }
 
   render() {
+    const {path, label, placeholder} = this.props.config;
     return (
       <div className="search-component">
         <form onSubmit={this.handleSubmit}>
           <div className="search-bar">
-            <label className="form-label">Przystanki</label>
-            <input className="search-form" type="text" value={this.state.query} onChange={this.handleInput} placeholder="Wpisz nazwę przystanku" />
+            <label className="form-label">{label}</label>
+            <input className="search-form" type="text" value={this.state.query} onChange={this.handleInput} placeholder={placeholder} />
           </div>
         </form>
         <div className="results-container">
-          <SearchResults result={this.state.stopPoints} isEmpty={this.state.query.length === 0} />
+          <SearchResults key={label} path={path} result={this.state.results} isEmpty={this.state.query.length === 0} />
         </div>
       </div>
     );
