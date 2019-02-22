@@ -22,11 +22,12 @@ export default class Clock extends Component {
   }  
 
   render() {
-    const dateISOString = this.state.date.toISOString()
+    const offset = this.state.date.getTimezoneOffset() * 60000;
+    const localDateISOString = (new Date(this.state.date - offset)).toISOString();
     return (
       <div className="clock">
-        <div className="clock-time">{formatDate(dateISOString, "HH:mm:ss")}</div>
-        <div className="clock-date">{formatDate(dateISOString, "dd.MM.yyyy")}</div>
+        <div className="clock-time">{formatDate(localDateISOString, "HH:mm:ss")}</div>
+        <div className="clock-date">{formatDate(localDateISOString, "dd.MM.yyyy")}</div>
       </div>
     );
   }
