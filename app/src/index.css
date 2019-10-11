@@ -6,6 +6,19 @@
 
 html {
   overflow-y: scroll;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 576px) {
+  html {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 992px) {
+  html {
+    font-size: 1rem;
+  }
 }
 
 body {

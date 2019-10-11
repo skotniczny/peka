@@ -360,9 +360,25 @@
 }
 
 .col {
-  flex: 1 1 11.1111%;
-  max-width: 11.1111%;
+  flex: 1 1 25%;
+  max-width: 25%;
   padding: 0 0.25rem;
+}
+
+@media (min-width: 576px) {
+  .col {
+    flex: 1 1 16.666667%;
+    max-width: 16.666667%;
+    padding: 0 0.25rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .col {
+    flex: 1 1 11.1111%;
+    max-width: 11.1111%;
+    padding: 0 0.25rem;
+  }
 }
 
 .error {
