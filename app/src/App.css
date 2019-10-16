@@ -267,11 +267,55 @@
   }
 }
 
+.form-container {
+  position: relative;
+}
+
 .search-form {
   font-size: 1.125rem;
   border: 3px solid #fff;
   padding: 0.5rem 1rem;
   width: 100%;
+}
+
+.has-loader .search-form {
+  padding-right: 1.75rem;
+}
+
+.loader {
+  height: 0.8rem;
+  margin: 0 0.25rem;
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  width: 0.8rem;
+  z-index: 2;
+}
+
+.loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.loading::after {
+  animation: loading .5s infinite linear;
+  border: .1rem solid #45484a;
+  border-top-color: rgb(69,	72, 74);
+  border-right-color: rgb(69,	72, 74);
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  content: "";
+  display: block;
+  height: 0.8rem;
+  left: 50%;
+  margin-left: -0.4rem;
+  margin-top: -0.4rem;
+  position: absolute;
+  top: 50%;
+  width: 0.8rem;
+  z-index: 1
 }
 
 .results-container {
@@ -466,3 +510,13 @@
     opacity: 0;
   }
 }
+
+@keyframes loading {
+  0% {
+   transform:rotate(0)
+  }
+  100% {
+   transform:rotate(360deg)
+  }
+ }
+ 

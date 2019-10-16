@@ -9,6 +9,7 @@ export default class Search extends Component {
     this.state = {
       query: '',
       error: null,
+      isLoading: false,
       isLoaded: false,
       results: []
     };
@@ -25,11 +26,13 @@ export default class Search extends Component {
 
   handleSubmit(event) {
     const url = API_URL + '/' + this.props.config.method + '/' + this.state.query;
+    this.setState({isLoading: true});
     fetch(url)
     .then(res => res.json())
     .then(
       (result) => {
         this.setState({
+          isLoading: false,
           isLoaded: true,
           results: result
         });
@@ -51,7 +54,10 @@ export default class Search extends Component {
         <form onSubmit={this.handleSubmit}>
           <div className="search-bar">
             <label className="form-label">{label}</label>
-            <input className="search-form" type="text" value={this.state.query} onChange={this.handleInput} placeholder={placeholder} />
+            <div className="form-container has-loader">
+              <input className="search-form" type="text" value={this.state.query} onChange={this.handleInput} placeholder={placeholder} />
+              <span className={`loader ${this.state.isLoading ? "loading" : ""}`}></span>
+            </div>
           </div>
         </form>
         <div className="results-container">
