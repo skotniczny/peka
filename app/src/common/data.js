@@ -1,4 +1,4 @@
-export const API_URL = (process.env.NODE_ENV !== "production") ? "http://localhost:3001" : "https://peka.mybluemix.net"
+export const API_URL = (process.env.NODE_ENV !== "production") ? "http://localhost:3001" : "https://pekapi.herokuapp.com"
 export const BASENAME = (process.env.NODE_ENV !== "production") ? "/" : "/peka"
 
 export const tramsColors = {
