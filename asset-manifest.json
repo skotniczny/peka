@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/peka/static/css/main.d80251f6.chunk.css",
+    "main.js": "/peka/static/js/main.b71fd61d.chunk.js",
+    "main.js.map": "/peka/static/js/main.b71fd61d.chunk.js.map",
+    "runtime-main.js": "/peka/static/js/runtime-main.50a964bd.js",
+    "runtime-main.js.map": "/peka/static/js/runtime-main.50a964bd.js.map",
+    "static/css/2.679831fc.chunk.css": "/peka/static/css/2.679831fc.chunk.css",
+    "static/js/2.d684fcb2.chunk.js": "/peka/static/js/2.d684fcb2.chunk.js",
+    "static/js/2.d684fcb2.chunk.js.map": "/peka/static/js/2.d684fcb2.chunk.js.map",
+    "index.html": "/peka/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/peka/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.d80251f6.chunk.css.map": "/peka/static/css/main.d80251f6.chunk.css.map",
+    "static/js/2.d684fcb2.chunk.js.LICENSE.txt": "/peka/static/js/2.d684fcb2.chunk.js.LICENSE.txt",
+    "static/media/bus.02a13a95.svg": "/peka/static/media/bus.02a13a95.svg",
+    "static/media/tram.e6d4d9c8.svg": "/peka/static/media/tram.e6d4d9c8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.50a964bd.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.d684fcb2.chunk.js",
+    "static/css/main.d80251f6.chunk.css",
+    "static/js/main.b71fd61d.chunk.js"
+  ]
+}
