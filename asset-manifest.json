@@ -1,25 +1,15 @@
 {
   "files": {
-    "main.css": "/peka/static/css/main.da6211a5.chunk.css",
-    "main.js": "/peka/static/js/main.bd97d755.chunk.js",
-    "main.js.map": "/peka/static/js/main.bd97d755.chunk.js.map",
-    "runtime-main.js": "/peka/static/js/runtime-main.3b701a61.js",
-    "runtime-main.js.map": "/peka/static/js/runtime-main.3b701a61.js.map",
-    "static/css/2.679831fc.chunk.css": "/peka/static/css/2.679831fc.chunk.css",
-    "static/js/2.2462325e.chunk.js": "/peka/static/js/2.2462325e.chunk.js",
-    "static/js/2.2462325e.chunk.js.map": "/peka/static/js/2.2462325e.chunk.js.map",
+    "main.css": "/peka/static/css/main.06181046.css",
+    "main.js": "/peka/static/js/main.0c891566.js",
+    "static/media/tram.svg": "/peka/static/media/tram.7424e8c983a2503367f18ba5370931d2.svg",
+    "static/media/bus.svg": "/peka/static/media/bus.bb67d59e529f7ab12b147e0dfdc81a38.svg",
     "index.html": "/peka/index.html",
-    "static/css/2.679831fc.chunk.css.map": "/peka/static/css/2.679831fc.chunk.css.map",
-    "static/css/main.da6211a5.chunk.css.map": "/peka/static/css/main.da6211a5.chunk.css.map",
-    "static/js/2.2462325e.chunk.js.LICENSE.txt": "/peka/static/js/2.2462325e.chunk.js.LICENSE.txt",
-    "static/media/bus.00e602b0.svg": "/peka/static/media/bus.00e602b0.svg",
-    "static/media/tram.c8756459.svg": "/peka/static/media/tram.c8756459.svg"
+    "main.06181046.css.map": "/peka/static/css/main.06181046.css.map",
+    "main.0c891566.js.map": "/peka/static/js/main.0c891566.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.3b701a61.js",
-    "static/css/2.679831fc.chunk.css",
-    "static/js/2.2462325e.chunk.js",
-    "static/css/main.da6211a5.chunk.css",
-    "static/js/main.bd97d755.chunk.js"
+    "static/css/main.06181046.css",
+    "static/js/main.0c891566.js"
   ]
 }
