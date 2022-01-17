@@ -1,50 +1,44 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import LineNumber from './LineNumber.js';
 import Spinner from './Spinner.js';
 
 import { API_URL } from '../common/data.js';
 
-export default class Line extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      directions: []
-    };
-  }
+function Line() {
 
-  componentDidMount() {
-    const url = API_URL + '/bollardsByLine/' + this.props.number;
-    fetch(url)
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [directions, setDirections] = useState(null);
+  const { number } = useParams();
+
+  const getData = (number) => {
+    const url = `${API_URL}/bollardsByLine/${number}`;
+    return fetch(url)
       .then(res => res.json())
+  };
+
+  useEffect(() => {
+    getData(number)
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            times: result.times,
-            directions: result.directions
-          });
+          setDirections(result.directions);
+          setIsLoaded(true);
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
+          setError(error);
+          setIsLoaded(true);
 
-  render() {
-    const { error, isLoaded, directions } = this.state;
-    if (error) {
-      return (<div className="error"><LineNumber line={this.props.number} /> Coś poszło nie tak!</div>);
-    } else if (!isLoaded) {
-      return <Spinner />;
-    } else {
-      return (
+        }
+      );
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <React.Fragment>
+      {!isLoaded && (<Spinner />) }
+      {error && (<div className="error"><LineNumber line={number} /> Coś poszło nie tak!</div>)}
+      {directions && (
         <div className="directions">
           {directions.map(direction => (
             <div className="direction" key={direction.direction.direction}>
@@ -64,7 +58,9 @@ export default class Line extends Component {
             </div>
           ))}
         </div>
-      );
-    }
-  }
+      )}
+    </React.Fragment>
+  );
 }
+
+export default Line;
