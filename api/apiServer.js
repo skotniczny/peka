@@ -1,11 +1,9 @@
-import http from 'http'
 import cors from 'cors'
-import Express from 'express'
+import express from 'express'
 
 import { apiRequest } from './utils/helpers.js'
 
-const app = new Express()
-const server = new http.Server(app)
+const app = express()
 const port = (process.env.PORT || 3001)
 
 const api = 'http://www.peka.poznan.pl/vm/method.vm?ts='
@@ -46,7 +44,7 @@ app.get('/bollardsByLine/:line', async (req, res) => {
   res.json(data.success)
 })
 
-server.listen(port, (err) => {
+app.listen(port, (err) => {
   if (err) return console.error(err)
   console.info(`API Server running on http://localhost:${port}`)
 })
