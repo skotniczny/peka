@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Server part of an app",
   "main": "apiServer.js",
+  "type": "module",
   "scripts": {
     "start": "node apiServer.js"
   },
@@ -11,6 +12,6 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "request": "^2.88.2"
+    "got": "^12.0.3"
   }
 }
