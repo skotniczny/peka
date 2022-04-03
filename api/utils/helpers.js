@@ -2,7 +2,7 @@ import got from 'got'
 
 export async function apiRequest(url, method, object) {
   try {
-    return await got
+    const data = await got
       .post({
         url: url,
         form: {
@@ -13,6 +13,8 @@ export async function apiRequest(url, method, object) {
           'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8'
         }
       })
+      const body = JSON.parse(data.body)
+      return body
   } catch (error) {
     console.log('Błąd: ', error)
   }
