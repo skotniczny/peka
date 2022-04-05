@@ -15,12 +15,8 @@ function Line() {
 
   const getData = (number) => {
     const url = `${API_URL}/bollardsByLine/${number}`;
-    return fetch(url)
+    fetch(url)
       .then(res => res.json())
-  };
-
-  useEffect(() => {
-    getData(number)
       .then(
         (result) => {
           setDirections(result.directions);
@@ -32,7 +28,11 @@ function Line() {
 
         }
       );
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  };
+
+  useEffect(() => {
+    getData(number)
+  }, [number]);
 
   return (
     <React.Fragment>

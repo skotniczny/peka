@@ -33,7 +33,7 @@ function BollardsBy({method}) {
 
   useEffect(() => {
     getData(method, name)
-  }, [location]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [location, method, name]);
 
   return (
     <React.Fragment>

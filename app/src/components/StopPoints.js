@@ -12,7 +12,7 @@ function StopPoint() {
   const [bollard, setBollard] = useState(null);
   const { tag } = useParams();
 
-  const loadData = (tag) => {
+  const getData = (tag) => {
     const url = `${API_URL}/times/${tag}`;
     fetch(url)
       .then(res => res.json())
@@ -28,16 +28,16 @@ function StopPoint() {
 
         }
       );
-  }
+  };
   
   useEffect(() => {
-    loadData(tag)
+    getData(tag)
     const id = setInterval(() => {
-      loadData(tag)
+      getData(tag)
     }, 15000);
     return () => clearInterval(id)
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
+  }, [tag]); 
+  
   return (
     <React.Fragment>
       {!isLoaded && (<Spinner />) }
