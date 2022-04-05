@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { BASENAME } from './common/data';
 
 import './App.css';
@@ -18,11 +18,13 @@ class App extends Component {
           <AppHeader />
           <main className="app-main">
             <div className="main-content">
-              <Route exact path="/" component={Lines} />
-              <Route path={`/linia/:number`} children={<Line />} />
-              <Route path={`/przystanek/:tag`} children={<StopPoint />} />
-              <Route path={`/przystanki/:name`} children={<BollardsBy method="bollardsByStopPoint" />} />
-              <Route path={`/ulica/:name`} children={<BollardsBy method="bollardsByStreet" />} />
+              <Routes>
+                <Route exact path="/" element={<Lines />} />
+                <Route path={`/linia/:number`} element={<Line />} />
+                <Route path={`/przystanek/:tag`} element={<StopPoint />} />
+                <Route path={`/przystanki/:name`} element={<BollardsBy method={"bollardsByStopPoint"} />} />
+                <Route path={`/ulica/:name`} element={<BollardsBy method={"bollardsByStreet"} />} />
+              </Routes>
             </div>
           </main>
         </div>
