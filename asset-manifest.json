@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/peka/static/css/main.06181046.css",
-    "main.js": "/peka/static/js/main.b3d28cdc.js",
+    "main.js": "/peka/static/js/main.19a870f8.js",
     "static/media/tram.svg": "/peka/static/media/tram.7424e8c983a2503367f18ba5370931d2.svg",
     "static/media/bus.svg": "/peka/static/media/bus.bb67d59e529f7ab12b147e0dfdc81a38.svg",
     "index.html": "/peka/index.html",
     "main.06181046.css.map": "/peka/static/css/main.06181046.css.map",
-    "main.b3d28cdc.js.map": "/peka/static/js/main.b3d28cdc.js.map"
+    "main.19a870f8.js.map": "/peka/static/js/main.19a870f8.js.map"
   },
   "entrypoints": [
     "static/css/main.06181046.css",
-    "static/js/main.b3d28cdc.js"
+    "static/js/main.19a870f8.js"
   ]
 }
