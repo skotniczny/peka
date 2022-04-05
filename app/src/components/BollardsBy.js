@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import BollardRow from './BollardRow.js';
@@ -7,45 +8,38 @@ import Spinner from './Spinner.js';
 
 import { API_URL } from '../common/data'
 
-export default class BollardsBy extends Component {
+function BollardsBy({method}) {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [bollards, setBollards] = useState(null);
+  const { name } = useParams();
+  const location = useLocation();
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      bollards: []
-    };
-  }
-
-  componentDidMount() {
-    const url = API_URL + "/" + this.props.method + "/" + this.props.name;
+  const getData = (method, name) => {
+    const url = `${API_URL}/${method}/${encodeURIComponent(name)}`;
     fetch(url)
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            bollards: result.bollards
-          })
+          setBollards(result.bollards);
+          setIsLoaded(true);
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          })
+          setError(error);
+          setIsLoaded(true);
         }
       );
-  }
+  };
 
-  render() {
-    const { error, isLoaded, bollards } = this.state;
-    if (error) {
-      return (<div>Error: {error.message}</div>);
-    } else if (!isLoaded) {
-      return <Spinner />;
-    } else {
-      return (
+  useEffect(() => {
+    getData(method, name)
+  }, [location]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  return (
+    <React.Fragment>
+      {!isLoaded && (<Spinner />)}
+      {error && (<div>Error: {error.message}</div>)}
+      {bollards && (
         <div className="stop-point">
           <div className="stop-point__rows">
             {bollards.map((item, index) => (
@@ -56,7 +50,9 @@ export default class BollardsBy extends Component {
             ))}
           </div>
         </div>
-      );
-    }    
-  }
+      )}
+    </React.Fragment>
+  )
 }
+
+export default BollardsBy;

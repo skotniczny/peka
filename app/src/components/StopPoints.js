@@ -1,58 +1,48 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Spinner from './Spinner';
 import StopPointDepartureTime from './StopPointDepartureTime';
 
 import { API_URL } from '../common/data';
 
-export default class StopPoint extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      error: null,
-      isLoaded: false,
-      times: [],
-      bollard: {}
-    };
-  }
+function StopPoint() {
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [times, setTimes] = useState(null);
+  const [bollard, setBollard] = useState(null);
+  const { tag } = useParams();
 
-  loadData() {
-    const url = API_URL + "/times/" + this.props.tag;
+  const loadData = (tag) => {
+    const url = `${API_URL}/times/${tag}`;
     fetch(url)
       .then(res => res.json())
       .then(
         (result) => {
-          this.setState({
-            isLoaded: true,
-            times: result.times,
-            bollard: result.bollard
-          });
+          setTimes(result.times);
+          setBollard(result.bollard);
+          setIsLoaded(true);
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
+          setError(error);
+          setIsLoaded(true);
+
         }
-      )
+      );
   }
+  
+  useEffect(() => {
+    loadData(tag)
+    const id = setInterval(() => {
+      loadData(tag)
+    }, 15000);
+    return () => clearInterval(id)
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  componentDidMount() {
-    this.loadData();
-    this.intervalID = setInterval(() => {this.loadData()}, 15000);
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.intervalID);
-  }
-
-  render() {
-    const { error, isLoaded, times, bollard } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <Spinner />;
-    } else {
-      return (
+  return (
+    <React.Fragment>
+      {!isLoaded && (<Spinner />) }
+      {error && (<div>Error: {error.message}</div>)}
+      {bollard && times && (
         <div className="stop-point">
           <div className="stop-point__data">
             <h2 className="item-name">{bollard.name}</h2>
@@ -78,7 +68,9 @@ export default class StopPoint extends Component {
             ))}
           </div>
         </div>
-      );
-    }
-  }
+      )}
+    </React.Fragment>
+  )
 }
+
+export default StopPoint;

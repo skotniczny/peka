@@ -20,9 +20,9 @@ class App extends Component {
             <div className="main-content">
               <Route exact path="/" component={Lines} />
               <Route path={`/linia/:number`} children={<Line />} />
-              <Route path={`/przystanek/:tag`} render={({match}) => (<StopPoint tag={match.params.tag} />)} />
-              <Route path={`/przystanki/:name`} render={({match}) => (<BollardsBy method="bollardsByStopPoint" name={match.params.name} key={`przystanki-${match.params.name}`} />)} />
-              <Route path={`/ulica/:name`} render={({match}) => (<BollardsBy method="bollardsByStreet" name={match.params.name} key={`ulice-${match.params.name}`} />)} />
+              <Route path={`/przystanek/:tag`} children={<StopPoint />} />
+              <Route path={`/przystanki/:name`} children={<BollardsBy method="bollardsByStopPoint" />} />
+              <Route path={`/ulica/:name`} children={<BollardsBy method="bollardsByStreet" />} />
             </div>
           </main>
         </div>
