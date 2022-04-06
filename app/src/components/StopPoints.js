@@ -41,7 +41,7 @@ function StopPoint() {
   return (
     <React.Fragment>
       {!isLoaded && (<Spinner />) }
-      {error && (<div>Error: {error.message}</div>)}
+      {error && (<div className="error">Error: {error.message}</div>)}
       {bollard && times && (
         <div className="stop-point">
           <div className="stop-point__data">

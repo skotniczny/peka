@@ -38,7 +38,7 @@ function BollardsBy({method}) {
   return (
     <React.Fragment>
       {!isLoaded && (<Spinner />)}
-      {error && (<div>Error: {error.message}</div>)}
+      {error && (<div className="error">Error: {error.message}</div>)}
       {bollards && (
         <div className="stop-point">
           <div className="stop-point__rows">
