@@ -62,6 +62,21 @@ function StopPoint() {
                 { item.lowFloorBus &&
                   <span title="pojazd niskopodłgowy">{"\u267F"}</span>
                 }
+                { item.lowEntranceBus &&
+                  <span title="pojazd z niską podłogą w środkowym członie">{"\u267F"}</span>
+                }
+                { item.lfRamp &&
+                  <span title="pojazd niskopodłgowy z rampą">{"\u267F"}</span>
+                }
+                { item.leRamp &&
+                  <span title="pojazd z niską podłogą w środkowym członie z rampą">{"\u267F"}</span>
+                }
+                { item.airCnd &&
+                  <span title="klimatyzacja">{"\u2744"}</span>
+                }
+                { item.bike &&
+                  <span title="możliwość przewozu rowerów">{"\u{1F6B2}"}</span>
+                }
               </div>
               <StopPointDepartureTime item={item} />
             </div>
