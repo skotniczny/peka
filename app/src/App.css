@@ -20,7 +20,7 @@
 }
 
 .app-main {
-  padding: 6rem 2rem 0;
+  padding: 6rem 1rem 0;
 }
 
 .main-content {
@@ -149,18 +149,18 @@
 }
 
 .item-direction {
-  flex: 1 1 70%;
-  max-width: 70%;
+  flex: 1 1 50%;
+  max-width: 50%;
 }
 
 .item-info {
-  flex: 1 1 10%;
-  max-width: 10%;
+  flex: 1 1 20%;
+  max-width: 20%;
 }
 
 .item-minutes {
-  flex: 1 1 10%;
-  max-width: 10%;
+  flex: 1 1 20%;
+  max-width: 20%;
 }
 
 .stop-point__headings .item-property {
@@ -174,14 +174,19 @@
 
 /* Line Directions */
 
-.directions {
-  display: flex;
+.direction {
   margin: 1rem 0;
 }
 
-.direction {
-  flex: 1 1 50%;
-  max-width: 50%;
+@media (min-width: 576px) {
+  .directions {
+    display: flex;
+  }
+  
+  .direction {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }  
 }
 
 .direction-heading {
