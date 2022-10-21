@@ -1,7 +1,7 @@
 import cors from 'cors'
 import express from 'express'
 
-import { apiRequest } from './utils/helpers.js'
+import { apiRequest } from './utils/helpers.mjs'
 
 const app = express()
 const port = (process.env.PORT || 3001)

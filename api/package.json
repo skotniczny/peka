@@ -2,10 +2,10 @@
   "name": "peka-api",
   "version": "1.0.0",
   "description": "Server part of an app",
-  "main": "apiServer.js",
-  "type": "module",
+  "main": "app.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node apiServer.js"
+    "start": "node app.js"
   },
   "author": "skotniczny",
   "license": "ISC",
