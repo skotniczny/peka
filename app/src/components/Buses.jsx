@@ -1,5 +1,5 @@
 import React from 'react';
-import LineNumber from './LineNumber.js';
+import LineNumber from './LineNumber';
 import busIcon from '../images/bus.svg';
 import { busLines } from '../common/data.js';
 

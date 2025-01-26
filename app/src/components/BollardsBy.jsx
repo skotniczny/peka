@@ -2,11 +2,11 @@ import React, { useEffect, useState} from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import BollardRow from './BollardRow.js';
-import Directions from './Directions.js';
-import Spinner from './Spinner.js';
+import BollardRow from './BollardRow';
+import Directions from './Directions';
+import Spinner from './Spinner';
 
-import { API_URL } from '../common/data'
+import { API_URL } from '../common/data.js'
 
 function BollardsBy({method}) {
   const [error, setError] = useState(null);

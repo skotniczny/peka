@@ -1,5 +1,5 @@
 import React from 'react';
-import LineNumber from './LineNumber.js';
+import LineNumber from './LineNumber';
 import tramIcon from '../images/tram.svg';
 import { tramLines } from '../common/data.js';
 

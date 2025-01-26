@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchResults from './SearchResults.js';
+import SearchResults from './SearchResults';
 
 import { API_URL } from '../common/data.js';
 
