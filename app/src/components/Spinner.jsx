@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Spinner = () => (
   <div className="spinner">
     <div className="bounce1"></div>

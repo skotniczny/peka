@@ -1,4 +1,3 @@
-import React  from 'react';
 import Buses from "./Buses";
 import Trams from "./Trams";
 

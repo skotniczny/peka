@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import { useEffect, useState} from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import Spinner from './Spinner';
 
 import { API_URL } from '../common/data.js'
 
-function BollardsBy({method}) {
+const BollardsBy = ({method}) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [bollards, setBollards] = useState(null);
@@ -36,7 +36,7 @@ function BollardsBy({method}) {
   }, [location, method, name]);
 
   return (
-    <React.Fragment>
+    <>
       {!isLoaded && (<Spinner />)}
       {error && (<div className="error">Error: {error.message}</div>)}
       {bollards && (
@@ -51,7 +51,7 @@ function BollardsBy({method}) {
           </div>
         </div>
       )}
-    </React.Fragment>
+    </>
   )
 }
 

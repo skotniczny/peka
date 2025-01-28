@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import LineNumber from './LineNumber';
@@ -6,7 +6,7 @@ import Spinner from './Spinner';
 
 import { API_URL } from '../common/data.js';
 
-function Line() {
+const Line = () => {
 
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,7 +35,7 @@ function Line() {
   }, [number]);
 
   return (
-    <React.Fragment>
+    <>
       {!isLoaded && (<Spinner />) }
       {error && (<div className="error"><LineNumber line={number} /> Coś poszło nie tak!</div>)}
       {directions && (
@@ -59,7 +59,7 @@ function Line() {
           ))}
         </div>
       )}
-    </React.Fragment>
+    </>
   );
 }
 

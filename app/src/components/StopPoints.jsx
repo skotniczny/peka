@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Spinner from './Spinner';
 import StopPointDepartureTime from './StopPointDepartureTime';
 
 import { API_URL } from '../common/data';
 
-function StopPoint() {
+const StopPoint = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [times, setTimes] = useState(null);
@@ -39,7 +39,7 @@ function StopPoint() {
   }, [tag]); 
   
   return (
-    <React.Fragment>
+    <>
       {!isLoaded && (<Spinner />) }
       {error && (<div className="error">Error: {error.message}</div>)}
       {bollard && times && (
@@ -84,7 +84,7 @@ function StopPoint() {
           </div>
         </div>
       )}
-    </React.Fragment>
+    </>
   )
 }
 

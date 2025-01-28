@@ -1,9 +1,7 @@
-import React from 'react';
 import { formatDate } from '../common/utils';
 
-const StopPointDepartureTime = props => {
-  const { realTime, minutes, departure } = props.item;
-
+const StopPointDepartureTime = ({item}) => {
+  const {realTime, minutes, departure} = item
   let isBlink = false;
   let display = minutes;
   if (realTime) {
