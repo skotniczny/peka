@@ -1,34 +1,26 @@
-import { Component} from 'react';
+import { useState} from 'react';
 import { formatDate } from '../common/utils';
+import { useEffect } from 'react';
 
-export default class Clock extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
+const Clock = () => {
+  const [date, setDate] = useState(new Date());
+  const tick = () => {
+    setDate(new Date())
   }
 
-  componentDidMount() {
-    this.intervalID = setInterval(() => this.tick(), 1000);
-  }
+  useEffect(() => {
+    const id = setTimeout(() => (tick(), 1000));
+    return () => clearTimeout(id)
+  }, [date]);
 
-  componentWillUnmount() {
-    clearInterval(this.intervalID);
-  }
-
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }  
-
-  render() {
-    const offset = this.state.date.getTimezoneOffset() * 60000;
-    const localDateISOString = (new Date(this.state.date - offset)).toISOString();
-    return (
-      <div className="clock">
-        <div className="clock-time">{formatDate(localDateISOString, "HH:mm:ss")}</div>
-        <div className="clock-date">{formatDate(localDateISOString, "dd.MM.yyyy")}</div>
-      </div>
-    );
-  }
+  const offset = date.getTimezoneOffset() * 60000;
+  const localDateISOString = (new Date(date - offset)).toISOString();
+  return (
+    <div className="clock">
+      <div className="clock-time">{formatDate(localDateISOString, "HH:mm:ss")}</div>
+      <div className="clock-date">{formatDate(localDateISOString, "dd.MM.yyyy")}</div>
+    </div>
+  );
 }
+
+export default Clock
