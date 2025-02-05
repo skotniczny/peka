@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const SearchResults = ({result, isEmpty, path}) => {
+const SearchResults = ({ result, isEmpty, path }) => {
   if (result.length && !isEmpty) {
     return (
       <div className="results-list">

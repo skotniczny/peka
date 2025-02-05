@@ -29,18 +29,18 @@ const StopPoint = () => {
         }
       );
   };
-  
+
   useEffect(() => {
     getData(tag)
     const id = setInterval(() => {
       getData(tag)
     }, 15000);
     return () => clearInterval(id)
-  }, [tag]); 
-  
+  }, [tag]);
+
   return (
     <>
-      {!isLoaded && (<Spinner />) }
+      {!isLoaded && (<Spinner />)}
       {error && (<div className="error">Error: {error.message}</div>)}
       {bollard && times && (
         <div className="stop-point">
@@ -55,31 +55,31 @@ const StopPoint = () => {
               <div className="item-property item-minutes">Odjazd</div>
             </div>
             {times.map((item, index) => (
-            <div className="stop-point__item" key={index}>
-              <div className="item-property item-line">{item.line}</div>
-              <div className="item-property item-direction">{item.direction}</div>
-              <div className="item-property item-info">
-                { item.lowFloorBus &&
-                  <span title="pojazd niskopodłgowy">{"\u267F"}</span>
-                }
-                { item.lowEntranceBus &&
-                  <span title="pojazd z niską podłogą w środkowym członie">{"\u267F"}</span>
-                }
-                { item.lfRamp &&
-                  <span title="pojazd niskopodłgowy z rampą">{"\u267F"}</span>
-                }
-                { item.leRamp &&
-                  <span title="pojazd z niską podłogą w środkowym członie z rampą">{"\u267F"}</span>
-                }
-                { item.airCnd &&
-                  <span title="klimatyzacja">{"\u2744"}</span>
-                }
-                { item.bike &&
-                  <span title="możliwość przewozu rowerów">{"\u{1F6B2}"}</span>
-                }
+              <div className="stop-point__item" key={index}>
+                <div className="item-property item-line">{item.line}</div>
+                <div className="item-property item-direction">{item.direction}</div>
+                <div className="item-property item-info">
+                  {item.lowFloorBus &&
+                    <span title="pojazd niskopodłgowy">{"\u267F"}</span>
+                  }
+                  {item.lowEntranceBus &&
+                    <span title="pojazd z niską podłogą w środkowym członie">{"\u267F"}</span>
+                  }
+                  {item.lfRamp &&
+                    <span title="pojazd niskopodłgowy z rampą">{"\u267F"}</span>
+                  }
+                  {item.leRamp &&
+                    <span title="pojazd z niską podłogą w środkowym członie z rampą">{"\u267F"}</span>
+                  }
+                  {item.airCnd &&
+                    <span title="klimatyzacja">{"\u2744"}</span>
+                  }
+                  {item.bike &&
+                    <span title="możliwość przewozu rowerów">{"\u{1F6B2}"}</span>
+                  }
+                </div>
+                <StopPointDepartureTime item={item} />
               </div>
-              <StopPointDepartureTime item={item} />
-            </div>
             ))}
           </div>
         </div>

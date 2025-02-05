@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-
 import { tramLines, tramsColors } from '../common/data.js';
 
 const LineNumber = ({line}) => {

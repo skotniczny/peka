@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import Spinner from './Spinner';
 
 import { API_URL } from '../common/data.js'
 
-const BollardsBy = ({method}) => {
+const BollardsBy = ({ method }) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [bollards, setBollards] = useState(null);

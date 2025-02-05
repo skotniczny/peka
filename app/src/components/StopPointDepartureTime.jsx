@@ -1,7 +1,7 @@
 import { formatDate } from '../common/utils';
 
-const StopPointDepartureTime = ({item}) => {
-  const {realTime, minutes, departure} = item
+const StopPointDepartureTime = ({ item }) => {
+  const { realTime, minutes, departure } = item
   let isBlink = false;
   let display = minutes;
   if (realTime) {

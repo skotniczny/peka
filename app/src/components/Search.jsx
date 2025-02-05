@@ -20,35 +20,35 @@ export default class Search extends Component {
 
   handleInput(event) {
     const value = event.target.value;
-    this.setState({query: value});
-    if (value === '') this.setState({results: []});
+    this.setState({ query: value });
+    if (value === '') this.setState({ results: [] });
   }
 
   handleSubmit(event) {
     const url = API_URL + '/' + this.props.config.method + '/' + this.state.query;
-    this.setState({isLoading: true});
+    this.setState({ isLoading: true });
     fetch(url)
-    .then(res => res.json())
-    .then(
-      (result) => {
-        this.setState({
-          isLoading: false,
-          isLoaded: true,
-          results: result
-        });
-      },
-      (error) => {
-        this.setState({
-          isLoaded: true,
-          error
-        });
-      }
-    )
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoading: false,
+            isLoaded: true,
+            results: result
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
     event.preventDefault();
   }
 
   render() {
-    const {path, label, placeholder} = this.props.config;
+    const { path, label, placeholder } = this.props.config;
     return (
       <div className="search-component">
         <form onSubmit={this.handleSubmit}>

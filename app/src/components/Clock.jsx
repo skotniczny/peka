@@ -1,4 +1,4 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { formatDate } from '../common/utils';
 import { useEffect } from 'react';
 

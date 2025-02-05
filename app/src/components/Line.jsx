@@ -36,7 +36,7 @@ const Line = () => {
 
   return (
     <>
-      {!isLoaded && (<Spinner />) }
+      {!isLoaded && (<Spinner />)}
       {error && (<div className="error"><LineNumber line={number} /> Coś poszło nie tak!</div>)}
       {directions && (
         <div className="directions">
@@ -45,8 +45,8 @@ const Line = () => {
               <div className="direction-heading">
                 <LineNumber line={direction.direction.lineName} />
                 <h2 className="direction-direction">Kierunek: {direction.direction.direction}
-                  <span title={'returnVariant:' + direction.direction.returnVariant.toString()}>{direction.direction.returnVariant ? '\u2B06' : '\u2B07' }</span>
-                </h2> 
+                  <span title={'returnVariant:' + direction.direction.returnVariant.toString()}>{direction.direction.returnVariant ? '\u2B06' : '\u2B07'}</span>
+                </h2>
               </div>
               {direction.bollards.map(bollard => (
                 <div className="direction-bollards" key={bollard.name}>

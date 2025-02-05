@@ -1,9 +1,9 @@
-const Directions = ({directions}) => {
+const Directions = ({ directions }) => {
   return (
     <div>
       <div className="stop-point__headings">
         <div className="item-property item-line">Linia</div>
-         <div className="item-property item-direction">Kierunek</div>
+        <div className="item-property item-direction">Kierunek</div>
       </div>
       {directions.map((item, index) => (
         <div className="stop-point__item" key={index}>
