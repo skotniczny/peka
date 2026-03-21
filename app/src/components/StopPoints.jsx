@@ -54,8 +54,8 @@ const StopPoint = () => {
               <div className="item-property item-direction">Kierunek</div>
               <div className="item-property item-minutes">Odjazd</div>
             </div>
-            {times.map((item, index) => (
-              <div className="stop-point__item" key={index}>
+            {times.map((item) => (
+              <div className="stop-point__item" key={`${item.departure}_${item.line}`}>
                 <div className="item-property item-line">{item.line}</div>
                 <div className="item-property item-direction">{item.direction}</div>
                 <div className="item-property item-info">
