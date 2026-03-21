@@ -33,9 +33,6 @@
   flex: 1 1 auto;
   padding-right: 2rem;
   color: #fff;
-}
-
-.app-name {
   margin: 0;
   font-weight: 500;
 }
@@ -224,6 +221,7 @@
 }
 
 .direction-line__link {
+  color: inherit;
   display: block;
   padding: 0.5rem 1rem;
 }
@@ -307,8 +305,6 @@
 .loading::after {
   animation: loading .5s infinite linear;
   border: .1rem solid #45484a;
-  border-top-color: rgb(69,	72, 74);
-  border-right-color: rgb(69,	72, 74);
   border-radius: 50%;
   border-right-color: transparent;
   border-top-color: transparent;
@@ -452,6 +448,10 @@
   animation-duration: 3s;
   animation-name: flash;
   animation-iteration-count: infinite;
+}
+
+.action-link {
+  color: #0066b3;
 }
 
 /* 

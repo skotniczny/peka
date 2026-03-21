@@ -8,6 +8,7 @@ import Lines from './components/Lines';
 import Line from './components/Line';
 import StopPoint from './components/StopPoints';
 import BollardsBy from './components/BollardsBy';
+import NotFound from './components/NotFound';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
               <Route path={`/przystanek/:tag`} element={<StopPoint />} />
               <Route path={`/przystanki/:name`} element={<BollardsBy method="bollardsByStopPoint" />} />
               <Route path={`/ulica/:name`} element={<BollardsBy method="bollardsByStreet" />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
         </main>
