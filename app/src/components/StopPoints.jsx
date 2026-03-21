@@ -19,6 +19,7 @@ const StopPoint = () => {
       .then(handleResponse)
       .then(
         (result) => {
+          setError(null);
           setTimes(result.times);
           setBollard(result.bollard);
           setIsLoaded(true);
