@@ -22,6 +22,12 @@ const Search = ({config}) => {
     if (results.length > 0) setIsOpen(true);
   }
 
+  const handleOnBlur = (e) => {
+    if (!ref.current.contains(e.relatedTarget)) {
+      setIsOpen(false);
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!query.trim()) return;
@@ -53,7 +59,7 @@ const Search = ({config}) => {
   }, []);
 
   return (
-    <div className="search-component" ref={ref}>
+    <div className="search-component" ref={ref} onBlur={handleOnBlur}>
       <form onSubmit={handleSubmit}>
         <div className="search-bar">
           <label className="form-label">{label}</label>
