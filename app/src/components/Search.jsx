@@ -2,6 +2,7 @@ import { Component } from 'react';
 import SearchResults from './SearchResults';
 
 import { API_URL } from '../common/data.js';
+import { handleResponse } from '../common/utils.js';
 
 export default class Search extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class Search extends Component {
     const url = API_URL + '/' + this.props.config.method + '/' + this.state.query;
     this.setState({ isLoading: true });
     fetch(url)
-      .then(res => res.json())
+      .then(handleResponse)
       .then(
         (result) => {
           this.setState({
@@ -39,6 +40,7 @@ export default class Search extends Component {
         },
         (error) => {
           this.setState({
+            isLoading: false,
             isLoaded: true,
             error
           });

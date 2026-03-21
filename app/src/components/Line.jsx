@@ -5,6 +5,7 @@ import LineNumber from './LineNumber';
 import Spinner from './Spinner';
 
 import { API_URL } from '../common/data.js';
+import { handleResponse } from '../common/utils.js';
 
 const Line = () => {
 
@@ -16,7 +17,7 @@ const Line = () => {
   const getData = (number) => {
     const url = `${API_URL}/bollardsByLine/${number}`;
     fetch(url)
-      .then(res => res.json())
+      .then(handleResponse)
       .then(
         (result) => {
           setDirections(result.directions);
@@ -25,7 +26,6 @@ const Line = () => {
         (error) => {
           setError(error);
           setIsLoaded(true);
-
         }
       );
   };

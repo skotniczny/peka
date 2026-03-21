@@ -4,6 +4,7 @@ import Spinner from './Spinner';
 import StopPointDepartureTime from './StopPointDepartureTime';
 
 import { API_URL } from '../common/data';
+import { handleResponse } from '../common/utils';
 
 const StopPoint = () => {
   const [error, setError] = useState(null);
@@ -15,7 +16,7 @@ const StopPoint = () => {
   const getData = (tag) => {
     const url = `${API_URL}/times/${tag}`;
     fetch(url)
-      .then(res => res.json())
+      .then(handleResponse)
       .then(
         (result) => {
           setTimes(result.times);
@@ -25,7 +26,6 @@ const StopPoint = () => {
         (error) => {
           setError(error);
           setIsLoaded(true);
-
         }
       );
   };

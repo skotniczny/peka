@@ -1,3 +1,8 @@
+export const handleResponse = (res) => {
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  return res.json();
+};
+
 const parseDateTimeString = (dateTimeString) => {
   const [date, timeAndZone] = dateTimeString.split("T");
   const [year, month, day] = date.split("-");

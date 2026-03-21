@@ -7,6 +7,7 @@ import Directions from './Directions';
 import Spinner from './Spinner';
 
 import { API_URL } from '../common/data.js'
+import { handleResponse } from '../common/utils.js';
 
 const BollardsBy = ({ method }) => {
   const [error, setError] = useState(null);
@@ -18,7 +19,7 @@ const BollardsBy = ({ method }) => {
   const getData = (method, name) => {
     const url = `${API_URL}/${method}/${encodeURIComponent(name)}`;
     fetch(url)
-      .then(res => res.json())
+      .then(handleResponse)
       .then(
         (result) => {
           setBollards(result.bollards);
