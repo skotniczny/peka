@@ -1,71 +1,54 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import SearchResults from './SearchResults';
 
 import { API_URL } from '../common/data.js';
 import { handleResponse } from '../common/utils.js';
 
-export default class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      query: '',
-      error: null,
-      isLoading: false,
-      isLoaded: false,
-      results: []
-    };
+const Search = ({config}) => {
+  const { method, label, path, placeholder } =  config
+  const [query, setQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [results, setResults] = useState([]);
 
-    this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  const handleOnChange = (event) => {
+    setQuery(event.target.value)
+    if (event.target.value === "") setResults([])
   }
 
-  handleInput(event) {
-    const value = event.target.value;
-    this.setState({ query: value });
-    if (value === '') this.setState({ results: [] });
-  }
-
-  handleSubmit(event) {
-    const url = API_URL + '/' + this.props.config.method + '/' + this.state.query;
-    this.setState({ isLoading: true });
+  const handleSubmit = (event) => {
+    const url = API_URL + '/' + method + '/' + query;
+    setIsLoading(true);
     fetch(url)
       .then(handleResponse)
       .then(
         (result) => {
-          this.setState({
-            isLoading: false,
-            isLoaded: true,
-            results: result
-          });
+          setIsLoading(false);
+          setResults(result);
         },
         (error) => {
-          this.setState({
-            isLoading: false,
-            isLoaded: true,
-            error
-          });
+          setIsLoading(false);
+          console.debug(error)
         }
-      )
+      );
     event.preventDefault();
   }
 
-  render() {
-    const { path, label, placeholder } = this.props.config;
-    return (
-      <div className="search-component">
-        <form onSubmit={this.handleSubmit}>
-          <div className="search-bar">
-            <label className="form-label">{label}</label>
-            <div className="form-container has-loader">
-              <input className="search-form" type="text" value={this.state.query} onChange={this.handleInput} placeholder={placeholder} />
-              <span className={`loader ${this.state.isLoading ? "loading" : ""}`}></span>
-            </div>
+  return (
+    <div className="search-component">
+      <form onSubmit={handleSubmit}>
+        <div className="search-bar">
+          <label className="form-label">{label}</label>
+          <div className="form-container has-loader">
+            <input className="search-form" type="text" value={query} onChange={handleOnChange} placeholder={placeholder} />
+            <span className={`loader ${isLoading ? "loading" : ""}`}></span>
           </div>
-        </form>
-        <div className="results-container">
-          <SearchResults key={label} path={path} result={this.state.results} isEmpty={this.state.query.length === 0} />
         </div>
+      </form>
+      <div className="results-container">
+        <SearchResults key={label} path={path} result={results} isEmpty={query.length === 0} />
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default Search;
