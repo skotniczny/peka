@@ -12,6 +12,7 @@ const Search = ({config}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [results, setResults] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const inputId = `search-${method}`
 
   const handleOnChange = (event) => {
     setQuery(event.target.value);
@@ -62,9 +63,10 @@ const Search = ({config}) => {
     <div className="search-component" ref={ref} onBlur={handleOnBlur}>
       <form onSubmit={handleSubmit}>
         <div className="search-bar">
-          <label className="form-label">{label}</label>
+          <label htmlFor={inputId} className="form-label">{label}</label>
           <div className="form-container has-loader">
             <input 
+              id={inputId}
               className="search-form"
               type="text"
               value={query}
