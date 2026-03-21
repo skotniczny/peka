@@ -18,7 +18,7 @@ const App = () => {
         <main className="app-main">
           <div className="main-content">
             <Routes>
-              <Route exact path="/" element={<Lines />} />
+              <Route path="/" element={<Lines />} />
               <Route path={`/linia/:number`} element={<Line />} />
               <Route path={`/przystanek/:tag`} element={<StopPoint />} />
               <Route path={`/przystanki/:name`} element={<BollardsBy method="bollardsByStopPoint" />} />
