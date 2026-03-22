@@ -4,7 +4,7 @@ import { busLines } from '../common/data.js';
 
 const Buses = () => (
   <div>
-    <h2 className="heading">Linie Autobusowe <img className="icon" src={busIcon} alt="Ikonka tramwaju" /></h2>
+    <h2 className="heading">Linie Autobusowe <img className="icon" src={busIcon} alt="" /></h2>
     <div className="row">
       {busLines.map(item => (
         <div className="col" key={item}>
