@@ -2,23 +2,16 @@ import { formatDate } from '../common/utils';
 
 const StopPointDepartureTime = ({ item }) => {
   const { realTime, minutes, departure } = item
-  let isBlink = false;
-  let display = minutes;
-  if (realTime) {
-    if (minutes === 0) {
-      display = "<1";
-      isBlink = true;
-    }
-    display += " min";
-  }
+  const isBlink = realTime && minutes === 0;
+  const display = realTime ? 
+    `${isBlink ? "<1" : minutes} min` : 
+    formatDate(departure, "HH:mm");
 
   return (
-    <div className={"item-property item-minutes " + (isBlink ? "blink" : "")}>
-      {realTime ? display : formatDate(departure, "HH:mm")}
+    <div className={`item-property item-minutes${isBlink ? " blink" : ""}`}>
+      {display}
     </div>
   );
 }
 
 export default StopPointDepartureTime;
-
-
