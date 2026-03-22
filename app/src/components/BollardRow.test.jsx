@@ -18,7 +18,7 @@ describe("BollardRow", () => {
   test("renders bollard tag as subheading and bollard symbol as title", () => {
     render(<BollardRow bollard={bollard} />);
     const subheading = screen.getByRole('heading', { level: 3 });
-    expect(subheading.textContent).toBe(bollard.tag);
+    expect(subheading).toHaveTextContent(bollard.tag);
     expect(subheading).toHaveAttribute('title', bollard.symbol);
   });
 });
