@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Spinner from './Spinner';
 import StopPointDepartureTime from './StopPointDepartureTime';
@@ -13,9 +13,10 @@ const StopPoint = () => {
   const [bollard, setBollard] = useState(null);
   const { tag } = useParams();
 
-  const getData = (tag) => {
+  const getData = useCallback(() => {
+    const controller = new AbortController();
     const url = `${API_URL}/times/${tag}`;
-    fetch(url)
+    fetch(url, { signal: controller.signal })
       .then(handleResponse)
       .then(
         (result) => {
@@ -25,19 +26,27 @@ const StopPoint = () => {
           setIsLoaded(true);
         },
         (error) => {
-          setError(error);
-          setIsLoaded(true);
+          if (error.name !== 'AbortError') {
+            setError(error);
+            setIsLoaded(true);
+          }
         }
       );
-  };
+
+    return controller;
+  }, [tag]);
 
   useEffect(() => {
-    getData(tag)
+    let controller = getData();
     const id = setInterval(() => {
-      getData(tag)
+      controller.abort();
+      controller = getData();
     }, 15000);
-    return () => clearInterval(id)
-  }, [tag]);
+    return () => {
+      controller.abort();
+      clearInterval(id);
+    };
+  }, [getData]);
 
   return (
     <>
@@ -67,7 +76,7 @@ const StopPoint = () => {
                     <span title="pojazd z niską podłogą w środkowym członie">{"\u267F"}</span>
                   }
                   {item.lfRamp &&
-                    <span title="pojazd niskopodłgowy z rampą">{"\u267F"}</span>
+                    <span title="pojazd niskopodłogowy z rampą">{"\u267F"}</span>
                   }
                   {item.leRamp &&
                     <span title="pojazd z niską podłogą w środkowym członie z rampą">{"\u267F"}</span>
