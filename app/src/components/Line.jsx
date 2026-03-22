@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import LineNumber from './LineNumber';
 import Spinner from './Spinner';
+import ErrorMessage from './ErrorMessage';
 
 import { API_URL } from '../common/data.js';
 import { handleResponse } from '../common/utils.js';
@@ -37,7 +38,7 @@ const Line = () => {
   return (
     <>
       {!isLoaded && (<Spinner />)}
-      {error && (<div className="error"><LineNumber line={number} /> Coś poszło nie tak!</div>)}
+      {error && (<ErrorMessage><LineNumber line={number} /> Coś poszło nie tak!</ErrorMessage>)}
       {directions && (
         <div className="directions">
           {directions.map(direction => (

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Spinner from './Spinner';
 import StopPointDepartureTime from './StopPointDepartureTime';
+import ErrorMessage from './ErrorMessage';
 
 import { API_URL } from '../common/data';
 import { handleResponse } from '../common/utils';
@@ -51,7 +52,7 @@ const StopPoint = () => {
   return (
     <>
       {!isLoaded && (<Spinner />)}
-      {error && (<div className="error">Error: {error.message}</div>)}
+      {error && (<ErrorMessage>Error: {error.message}</ErrorMessage>)}
       {bollard && times && (
         <div className="stop-point">
           <div className="stop-point__data">
