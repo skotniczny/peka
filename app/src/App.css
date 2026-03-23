@@ -230,8 +230,13 @@
   width: 2em;
   height: 2em;
   line-height: 2em;
-  border-color: transparent;
   border-radius: 1.5em;
+}
+
+.direction-line__night {
+  background-color: #2B2A29;
+  border-color: transparent;
+  color: #fff;
 }
 
 .direction-line__tram .direction-line__link {
