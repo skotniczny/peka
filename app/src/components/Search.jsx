@@ -14,17 +14,17 @@ const Search = ({config}) => {
   const [isOpen, setIsOpen] = useState(false);
   const inputId = `search-${method}`
 
-  const handleOnChange = (event) => {
+  const handleChange = (event) => {
     setQuery(event.target.value);
     if (event.target.value === "") setResults([]);
   }
 
-  const handleOnFocus = () => {
+  const handleFocus = () => {
     if (results.length > 0) setIsOpen(true);
   }
 
-  const handleOnBlur = (e) => {
-    if (!ref.current.contains(e.relatedTarget)) {
+  const handleBlur = (event) => {
+    if (!ref.current.contains(event.relatedTarget)) {
       setIsOpen(false);
     }
   }
@@ -50,8 +50,8 @@ const Search = ({config}) => {
   }
 
   useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
@@ -60,7 +60,7 @@ const Search = ({config}) => {
   }, []);
 
   return (
-    <div className="search-component" ref={ref} onBlur={handleOnBlur}>
+    <div className="search-component" ref={ref} onBlur={handleBlur}>
       <form onSubmit={handleSubmit}>
         <div className="search-bar">
           <label htmlFor={inputId} className="form-label">{label}</label>
@@ -70,8 +70,8 @@ const Search = ({config}) => {
               className="search-form"
               type="text"
               value={query}
-              onChange={handleOnChange}
-              onFocus={handleOnFocus}
+              onChange={handleChange}
+              onFocus={handleFocus}
               placeholder={placeholder} />
             <span className={`loader ${isLoading ? "loading" : ""}`}></span>
           </div>

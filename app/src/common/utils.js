@@ -1,6 +1,6 @@
-export const handleResponse = (res) => {
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  return res.json();
+export const handleResponse = (response) => {
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return response.json();
 };
 
 const parseDateTimeString = (dateTimeString) => {
