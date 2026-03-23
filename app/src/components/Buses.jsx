@@ -3,7 +3,7 @@ import busIcon from '../images/bus.svg';
 import { busLines } from '../common/data.js';
 
 const Buses = () => (
-  <div>
+  <section>
     <h2 className="heading">Linie Autobusowe <img className="icon" src={busIcon} alt="" /></h2>
     <div className="row">
       {busLines.map(item => (
@@ -12,7 +12,7 @@ const Buses = () => (
         </div>
       ))}
     </div>
-  </div>
+  </section>
 )
 
 export default Buses;

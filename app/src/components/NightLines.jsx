@@ -4,7 +4,7 @@ import nightLineIcon from "../images/night.svg";
 
 const NightLines = () => {
   return (
-    <div>
+    <section>
       <h2 className="heading">Linie Nocne <img className="icon" src={nightLineIcon} alt="" /></h2>
       <div className="row">
         {nightLines.map(item => (
@@ -13,7 +13,7 @@ const NightLines = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

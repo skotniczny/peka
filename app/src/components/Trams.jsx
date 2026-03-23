@@ -4,7 +4,7 @@ import { tramLines } from '../common/data.js';
 
 const Trams = () => {
   return (
-    <div>
+    <section>
       <h2 className="heading">Linie Tramwajowe <img className="icon" src={tramIcon} alt="" /></h2>
       <div className="row">
         {tramLines.map(item => (
@@ -13,7 +13,7 @@ const Trams = () => {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
