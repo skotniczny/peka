@@ -21,6 +21,7 @@
 
 .app-main {
   padding: 6rem 1rem 0;
+  position: relative;
 }
 
 .main-content {
@@ -470,7 +471,10 @@
  */
 
 .spinner {
-  margin: 100px auto 0;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
   width: 70px;
   text-align: center;
 }
