@@ -84,7 +84,8 @@ describe("BollardsBy", () => {
       global.fetch.mockReturnValue(new Promise(() => {}));
       renderBollardsBy("bollardsByStopPoint", "Rondo Żegrze");
       expect(global.fetch).toHaveBeenCalledWith(
-        expect.stringContaining("/bollardsByStopPoint/Rondo%20%C5%BBegrze")
+        expect.stringContaining("/bollardsByStopPoint/Rondo%20%C5%BBegrze"),
+        expect.objectContaining({ signal: expect.any(AbortSignal) })
       );
     });
   });
@@ -107,7 +108,8 @@ describe("BollardsBy", () => {
       global.fetch.mockReturnValue(new Promise(() => {}));
       renderBollardsBy("bollardsByStreet", "Śródka/Śródka");
       expect(global.fetch).toHaveBeenCalledWith(
-        expect.stringContaining("/bollardsByStreet/%C5%9Ar%C3%B3dka%2F%C5%9Ar%C3%B3dka")
+        expect.stringContaining("/bollardsByStreet/%C5%9Ar%C3%B3dka%2F%C5%9Ar%C3%B3dka"),
+        expect.objectContaining({ signal: expect.any(AbortSignal) })
       );
     });
   });

@@ -78,7 +78,8 @@ describe("Line", () => {
     global.fetch.mockReturnValue(new Promise(() => {}));
     renderLine("193");
     expect(global.fetch).toHaveBeenCalledWith(
-      expect.stringContaining("/bollardsByLine/193")
+      expect.stringContaining("/bollardsByLine/193"),
+      expect.objectContaining({ signal: expect.any(AbortSignal) })
     );
   });
 });

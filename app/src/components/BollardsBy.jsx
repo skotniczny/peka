@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import BollardRow from './BollardRow';
@@ -8,38 +7,17 @@ import Spinner from './Spinner';
 import ErrorMessage from './ErrorMessage';
 
 import { API_URL } from '../common/data.js'
-import { handleResponse } from '../common/utils.js';
+import useFetch from '../common/useFetch.js';
 
 const BollardsBy = ({ method }) => {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [bollards, setBollards] = useState(null);
   const { name } = useParams();
-  const location = useLocation();
-
-  const getData = (method, name) => {
-    const url = `${API_URL}/${method}/${encodeURIComponent(name)}`;
-    fetch(url)
-      .then(handleResponse)
-      .then(
-        (result) => {
-          setBollards(result.bollards);
-          setIsLoaded(true);
-        },
-        (error) => {
-          setError(error);
-          setIsLoaded(true);
-        }
-      );
-  };
-
-  useEffect(() => {
-    getData(method, name)
-  }, [location, method, name]);
+  const url = `${API_URL}/${method}/${encodeURIComponent(name)}`;
+  const { data, error, loading } = useFetch(url);
+  const bollards = data?.bollards;
 
   return (
     <>
-      {!isLoaded && (<Spinner />)}
+      {loading && (<Spinner />)}
       {error && (<ErrorMessage>Error: {error.message}</ErrorMessage>)}
       {bollards && (
         <div className="stop-point">

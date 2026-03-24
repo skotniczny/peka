@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import LineNumber from './LineNumber';
@@ -6,38 +5,18 @@ import Spinner from './Spinner';
 import ErrorMessage from './ErrorMessage';
 
 import { API_URL } from '../common/data.js';
-import { handleResponse } from '../common/utils.js';
+import useFetch from '../common/useFetch.js';
 
 const Line = () => {
-
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [directions, setDirections] = useState(null);
   const { number } = useParams();
 
-  const getData = (number) => {
-    const url = `${API_URL}/bollardsByLine/${number}`;
-    fetch(url)
-      .then(handleResponse)
-      .then(
-        (result) => {
-          setDirections(result.directions);
-          setIsLoaded(true);
-        },
-        (error) => {
-          setError(error);
-          setIsLoaded(true);
-        }
-      );
-  };
-
-  useEffect(() => {
-    getData(number)
-  }, [number]);
+  const url = `${API_URL}/bollardsByLine/${number}`;
+  const { data, error, loading } = useFetch(url);
+  const directions = data?.directions;
 
   return (
     <>
-      {!isLoaded && (<Spinner />)}
+      {loading && (<Spinner />)}
       {error && (<ErrorMessage><LineNumber line={number} /> Coś poszło nie tak!</ErrorMessage>)}
       {directions && (
         <div className="directions">
