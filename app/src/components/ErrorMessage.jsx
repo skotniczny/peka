@@ -1,5 +1,5 @@
 const ErrorMessage = ({ children }) => (
-  <div className="error">{children}</div>
+  <div role="alert" className="error">{children}</div>
 );
 
 export default ErrorMessage;
