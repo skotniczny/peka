@@ -22,12 +22,12 @@ const Line = () => {
         <div className="directions">
           {directions.map(direction => (
             <div className="direction" key={direction.direction.direction}>
-              <div className="direction-heading">
+              <h2 className="direction-heading">
                 <LineNumber line={direction.direction.lineName} />
-                <h2 className="direction-direction">Kierunek: {direction.direction.direction}
+                <span className="direction-direction">Kierunek: {direction.direction.direction}
                   <span title={'returnVariant:' + direction.direction.returnVariant.toString()}>{direction.direction.returnVariant ? '\u2B06' : '\u2B07'}</span>
-                </h2>
-              </div>
+                </span>
+              </h2>
               {direction.bollards.map(bollard => (
                 <div className="direction-bollards" key={bollard.name}>
                   <Link to={`/przystanek/${bollard.tag}`} className="direction-bollard__link">

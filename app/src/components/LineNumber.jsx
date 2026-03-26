@@ -12,11 +12,11 @@ const LineNumber = ({line}) => {
   ].filter(Boolean).join(" ");
 
   return (
-    <h2 className={className} style={tramsColors[line] && { ...tramsColors[line], borderColor: "transparent" }}>
+    <span className={className} style={tramsColors[line] && { ...tramsColors[line], borderColor: "transparent" }}>
       <Link to={`/linia/${line}`} className="direction-line__link">
-        {isTram ? <div className="line-signature">{line}</div> : line}
+        {isTram ? <span className="line-signature">{line}</span> : line}
       </Link>
-    </h2>
+    </span>
   );
 }
 
