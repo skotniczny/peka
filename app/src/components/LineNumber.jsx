@@ -13,9 +13,7 @@ const LineNumber = ({line}) => {
 
   return (
     <span className={className} style={tramsColors[line] && { ...tramsColors[line], borderColor: "transparent" }}>
-      <Link to={`/linia/${line}`} className="direction-line__link">
-        {isTram ? <span className="line-signature">{line}</span> : line}
-      </Link>
+      <Link to={`/linia/${line}`} className="direction-line__link">{line}</Link>
     </span>
   );
 }

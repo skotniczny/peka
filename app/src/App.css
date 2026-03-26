@@ -235,10 +235,11 @@
 }
 
 .direction-line__tram {
-  width: 2em;
-  height: 2em;
-  line-height: 2em;
-  border-radius: 1.5em;
+  width: 4rem;
+  height: 4rem;
+  line-height: 4rem;
+  font-size: 2.25rem;
+  border-radius: 50%;
 }
 
 .direction-line__night {
@@ -249,10 +250,6 @@
 
 .direction-line__tram .direction-line__link {
   padding: 0;
-}
-
-.line-signature {
-  font-size: 2.25rem;
 }
 
 .direction-direction {
