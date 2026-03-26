@@ -7,6 +7,15 @@ import ErrorMessage from './ErrorMessage';
 import { API_URL } from '../common/data';
 import { handleResponse } from '../common/utils';
 
+const vehicleFeatures = [
+  { key: "lowFloorBus", icon: "\u267F", title: "pojazd niskopodłogowy" },
+  { key: "lowEntranceBus", icon: "\u267F", title: "pojazd z niską podłogą w środkowym członie" },
+  { key: "lfRamp", icon: "\u267F", title: "pojazd niskopodłogowy z rampą" },
+  { key: "leRamp", icon: "\u267F", title: "pojazd z niską podłogą w środkowym członie z rampą" },
+  { key: "airCnd", icon: "\u2744", title: "klimatyzacja" },
+  { key: "bike", icon: "\u{1F6B2}", title: "możliwość przewozu rowerów" },
+];
+
 const StopPoint = () => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -70,24 +79,9 @@ const StopPoint = () => {
                 <div className="item-property item-line" role="cell">{item.line}</div>
                 <div className="item-property item-direction" role="cell">{item.direction}</div>
                 <div className="item-property item-info" role="cell">
-                  {item.lowFloorBus &&
-                    <span title="pojazd niskopodłgowy">{"\u267F"}</span>
-                  }
-                  {item.lowEntranceBus &&
-                    <span title="pojazd z niską podłogą w środkowym członie">{"\u267F"}</span>
-                  }
-                  {item.lfRamp &&
-                    <span title="pojazd niskopodłogowy z rampą">{"\u267F"}</span>
-                  }
-                  {item.leRamp &&
-                    <span title="pojazd z niską podłogą w środkowym członie z rampą">{"\u267F"}</span>
-                  }
-                  {item.airCnd &&
-                    <span title="klimatyzacja">{"\u2744"}</span>
-                  }
-                  {item.bike &&
-                    <span title="możliwość przewozu rowerów">{"\u{1F6B2}"}</span>
-                  }
+                {vehicleFeatures.map(feature => item[feature.key] && (
+                  <span key={feature.key} title={feature.title}>{feature.icon}</span>
+                ))}
                 </div>
                 <StopPointDepartureTime item={item} />
               </div>
