@@ -8,7 +8,7 @@ const StopPointDepartureTime = ({ item }) => {
     formatDate(departure, "HH:mm");
 
   return (
-    <div className={`item-property item-minutes${isBlink ? " blink" : ""}`}>
+    <div className={`item-property item-minutes${isBlink ? " blink" : ""}`} role="cell">
       {display}
     </div>
   );

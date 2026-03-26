@@ -59,17 +59,17 @@ const StopPoint = () => {
             <h2 className="item-name">{bollard.name}</h2>
             <h3 className="item-tag" title={bollard.tag}>{bollard.symbol}</h3>
           </div>
-          <div className="stop-point__rows">
-            <div className="stop-point__headings">
-              <div className="item-property item-line">Linia</div>
-              <div className="item-property item-direction">Kierunek</div>
-              <div className="item-property item-minutes">Odjazd</div>
+          <div className="stop-point__rows" role="table">
+            <div className="stop-point__headings" role="row">
+              <div className="item-property item-line" role="columnheader">Linia</div>
+              <div className="item-property item-direction" role="columnheader">Kierunek</div>
+              <div className="item-property item-minutes" role="columnheader">Odjazd</div>
             </div>
             {times.map((item) => (
-              <div className="stop-point__item" key={`${item.departure}_${item.line}`}>
-                <div className="item-property item-line">{item.line}</div>
-                <div className="item-property item-direction">{item.direction}</div>
-                <div className="item-property item-info">
+              <div className="stop-point__item" role="row" key={`${item.departure}_${item.line}`}>
+                <div className="item-property item-line" role="cell">{item.line}</div>
+                <div className="item-property item-direction" role="cell">{item.direction}</div>
+                <div className="item-property item-info" role="cell">
                   {item.lowFloorBus &&
                     <span title="pojazd niskopodłgowy">{"\u267F"}</span>
                   }
