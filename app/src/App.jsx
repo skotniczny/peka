@@ -10,6 +10,17 @@ import StopPoint from './components/StopPoints';
 import BollardsBy from './components/BollardsBy';
 import NotFound from './components/NotFound';
 
+export const AppRoutes = () => (
+  <Routes>
+    <Route path="/" element={<Lines />} />
+    <Route path="/linia/:number" element={<Line />} />
+    <Route path="/przystanek/:tag" element={<StopPoint />} />
+    <Route path="/przystanki/:name" element={<BollardsBy method="bollardsByStopPoint" />} />
+    <Route path="/ulica/:name" element={<BollardsBy method="bollardsByStreet" />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
+
 const App = () => {
   return (
     <Router basename={BASENAME}>
@@ -17,14 +28,7 @@ const App = () => {
         <AppHeader />
         <main className="app-main">
           <div className="main-content">
-            <Routes>
-              <Route path="/" element={<Lines />} />
-              <Route path={`/linia/:number`} element={<Line />} />
-              <Route path={`/przystanek/:tag`} element={<StopPoint />} />
-              <Route path={`/przystanki/:name`} element={<BollardsBy method="bollardsByStopPoint" />} />
-              <Route path={`/ulica/:name`} element={<BollardsBy method="bollardsByStreet" />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AppRoutes />
           </div>
         </main>
       </div>
