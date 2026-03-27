@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Tag from './Tag';
 
 const SearchResults = ({ result, isEmpty, path }) => {
   if (!result.length || isEmpty) return null;
@@ -8,7 +9,7 @@ const SearchResults = ({ result, isEmpty, path }) => {
       {result.map((item, index) => (
         <li className="search-row" key={`${path}-${index}`}>
           <Link to={`/${path}/${encodeURIComponent(item.name)}`} className="search-row-link">
-            {item.name} {(item.symbol ? <span className="tag">{item.symbol}</span> : "")}
+            {item.name} {item.symbol && <Tag>{item.symbol}</Tag>}
           </Link>
         </li>
       ))}
