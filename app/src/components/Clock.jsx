@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { formatDate } from '../common/utils';
+import { formatDate, HHmmss, ddMMyyyy } from '../common/utils';
 
 const Clock = () => {
   const [date, setDate] = useState(() => new Date());
@@ -10,12 +10,10 @@ const Clock = () => {
     return () => clearInterval(id);
   }, []);
 
-  const offset = date.getTimezoneOffset() * 60000;
-  const localDateISOString = (new Date(date - offset)).toISOString();
   return (
     <div className="clock">
-      <div className="clock-time">{formatDate(localDateISOString, "HH:mm:ss")}</div>
-      <div className="clock-date">{formatDate(localDateISOString, "dd.MM.yyyy")}</div>
+      <div className="clock-time">{formatDate(date, HHmmss)}</div>
+      <div className="clock-date">{formatDate(date, ddMMyyyy)}</div>
     </div>
   );
 }

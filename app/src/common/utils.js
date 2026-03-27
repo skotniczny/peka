@@ -3,31 +3,36 @@ export const handleResponse = (response) => {
   return response.json();
 };
 
-const parseDateTimeString = (dateTimeString) => {
-  const [date, timeAndZone] = dateTimeString.split("T");
-  const [year, month, day] = date.split("-");
-  const [time, zone] = timeAndZone.split(".");
-  const [hours, minutes, seconds] = time.split(":");
-  return {
-    "yyyy": year,
-    "MM": month,
-    "dd": day,
-    "HH": hours,
-    "mm": minutes,
-    "ss": seconds,
-    "zzzz": zone
-  }
-}
+export const HHmm = new Intl.DateTimeFormat("pl", {
+  hour: "2-digit",
+  minute: "2-digit",
+});
 
-export const formatDate = (dateTimetring, format) => {
-  const parsedDate = parseDateTimeString(dateTimetring)
-  let output = "";
-  let regex = /(HH)|(MM)|(dd)|(mm)|(ss)|(yyyy)|(zzzz)|([^HMdmsyz']+)/g;
-  let match;
+export const HHmmss = new Intl.DateTimeFormat("pl", {
+  hour: "2-digit",
+  minute: "2-digit",
+  second: "2-digit",
+});
 
-  // eslint-disable-next-line
-  while (match = regex.exec(format)) {
-    output += parsedDate[match[0]] || match[0]
+export const ddMMyyyy = new Intl.DateTimeFormat("pl", {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+});
+
+export const formatDate = (dateTime, formatter) => {
+  if (typeof dateTime === "string") {
+    // API returns local time with Z suffix — strip it so Date parses as local
+    dateTime = dateTime.replace(/Z$/, "");
+  } else if (!(dateTime instanceof Date)) {
+    throw new TypeError(`Expected Date or ISO string, got: ${dateTime}`);
   }
-  return output
-}
+
+  const date = new Date(dateTime);
+
+  if (isNaN(date)) {
+    throw new TypeError(`Invalid date: ${dateTime}`);
+  }
+
+  return formatter.format(date);
+};
