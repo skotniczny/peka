@@ -59,7 +59,7 @@ describe("Line", () => {
     });
     renderLine();
 
-    expect(await screen.findByText("Kierunek: Os. Sobieskiego")).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 2, name: /Kierunek: Os. Sobieskiego/ })).toBeInTheDocument();
     expect(screen.getByText("Kierunek: Os. Kopernika")).toBeInTheDocument();
   });
 
