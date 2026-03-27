@@ -206,8 +206,13 @@
 }
 
 .direction-bollards {
+  padding: 0;
+}
+
+.direction-bollard {
   padding: 0.25rem 1rem;
   position: relative;
+  list-style-type: none;
 }
 
 .direction-bollard__link:hover {
@@ -400,19 +405,36 @@
   transition: background-color 0.2s ease;
 }
 
-.order-no.first::before {
-  top: 50%;
-  bottom: 1px;
+.order-no.first::before,
+.order-no.last::before {
   left: 6px;
   width: 4px;
   background-color: #1b9dd9;
 }
 
-.order-no.first:after {
-  background-color: #fff;
+.order-no.first::before {
+  top: 50%;
+  bottom: 1px;
+}
+
+.order-no.last::before {
+  top: -1px;
+  bottom: 50%;
+}
+
+.order-no.first::after,
+.order-no.last::after {
   border: 2px solid #000;
   width: 14px;
   height: 14px;
+}
+
+.order-no.first::after {
+  background-color: #fff;
+}
+
+.order-no.last::after {
+  background-color: #eee;
 }
 
 .bollard-name {
