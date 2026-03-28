@@ -60,7 +60,7 @@ const Search = ({config}) => {
   }, []);
 
   return (
-    <div className="search-component" ref={ref} onBlur={handleBlur}>
+    <search className="search-component" ref={ref} onBlur={handleBlur} aria-label={`Wyszukaj ${label}`}>
       <form onSubmit={handleSubmit}>
         <div className="search-bar">
           <label htmlFor={inputId} className="form-label">{label}</label>
@@ -80,7 +80,7 @@ const Search = ({config}) => {
       <div className="results-container">
         {isOpen && <SearchResults key={label} path={path} result={results} isEmpty={query.length === 0} />}
       </div>
-    </div>
+    </search>
   );
 }
 
