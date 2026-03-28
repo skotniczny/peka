@@ -7,7 +7,8 @@
   right: 0;
   margin: 0;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  row-gap: 1rem;
   z-index: 1;
 }
 
@@ -16,7 +17,7 @@
   color: #fff;
   border-top: 3px dotted #fff;
   border-bottom: 3px dotted #fff;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .app-main {
@@ -36,6 +37,16 @@
   color: #fff;
   margin: 0;
   font-weight: 500;
+}
+
+.app-search {
+  display: none;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.app-search_open {
+  display: flex;
 }
 
 .app-name-link {
@@ -69,10 +80,13 @@
 
 @media (min-width: 1200px) {
   .app-header {
-    display: block;
     min-height: 100vh;
     padding-top: 2rem;
     width: 32%;
+  }
+
+  .app-search {
+    display: flex;
   }
 
   .app-main {
@@ -86,8 +100,8 @@
     display: block;
   }
 
-  .search-component {
-    margin-bottom: 1rem;
+  .mobile-only {
+    display: none;
   }
 }
 
@@ -277,16 +291,10 @@
 
 .form-label {
   color: #fff;
-  display: none;
+  display: inline-block;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   font-weight: 600;
-}
-
-@media (min-width: 1200px) {
-  .form-label {
-    display: inline-block;
-  }
 }
 
 .form-container {
@@ -489,6 +497,19 @@
 
 .action-link {
   color: #0066b3;
+}
+
+.btn {
+  appearance: none;
+  color: #fff;
+  background: transparent;
+  border-color: transparent;
+  font-size: 1.5rem;
+  border-radius: 2px;
+}
+
+.btn:focus-visible {
+  outline: 1px solid #fff;
 }
 
 /* 
