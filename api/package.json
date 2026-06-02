@@ -10,8 +10,8 @@
   "author": "skotniczny",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "express": "^5.2.1",
-    "got": "^14.6.6"
+    "got": "^15.0.5"
   }
 }
