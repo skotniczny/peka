@@ -6,7 +6,7 @@ import { apiRequest } from './utils/helpers.mjs'
 const app = express()
 const port = (process.env.PORT || 3001)
 
-const api = 'http://www.peka.poznan.pl/vm/method.vm?ts='
+const api = 'https://www.peka.poznan.pl/vm/method.vm?ts='
 
 app.use(cors())
 app.use((req, res, next) => {
