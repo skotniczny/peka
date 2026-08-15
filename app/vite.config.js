@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { BASENAME } from './src/common/data'
+import { BASENAME } from './src/common/data.js'
 
 // https://vite.dev/config/
 export default defineConfig({
